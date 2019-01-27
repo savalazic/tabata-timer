@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import * as serviceWorker from './serviceWorker';
 
-import App from './App';
+import { App } from './App';
 import { ThemeProvider } from './ThemeProvider';
 
 const GlobalStyle = createGlobalStyle`
