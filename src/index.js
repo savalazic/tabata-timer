@@ -1,11 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './App';
+import { ThemeProvider } from './ThemeProvider';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+  html {
+    font-family: -apple-system, '.SFNSText-Regular', 'San Francisco',
+      BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+      'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Lucida Grande', Arial,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    outline: none;
+    line-height: inherit;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+`;
+
+const Root = () => (
+  <ThemeProvider>
+    <GlobalStyle />
+    <App />
+  </ThemeProvider>
+);
+
+ReactDOM.render(<Root />, document.getElementById('root'));
+
 serviceWorker.unregister();
