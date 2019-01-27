@@ -7,9 +7,9 @@ const getButtonColor = ({ type, theme }) => (type ? theme[type] : theme.default)
 const StyledButton = styled.button`
   background-color: ${props => getButtonColor({ theme: props.theme, type: props.type })};
   color: #fff;
-  padding: 20px 80px;
+  padding: 20px 90px;
   border-radius: 40px;
-  font-size: 25px;
+  font-size: 30px;
   max-width: 240px;
   width: 100%;
   text-align: center;
