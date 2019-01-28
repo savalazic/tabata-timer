@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Center } from '../components';
 
 import { Controls } from './Controls';
 import { Rounds } from './Rounds';
 import { Timer } from './Timer';
 import { Setup } from './Setup';
+
+import { useTabataHook } from './useTabataHook';
 
 const App = () => {
   const initialTabataState = {
@@ -15,60 +17,9 @@ const App = () => {
     isFinished: false,
   };
 
-  const [tabata, setTabata] = useState(initialTabataState);
-
-  const startTabata = () => setTabata({
-    ...tabata,
-    isStarted: true,
-  });
-  const stopTabata = () => setTabata(initialTabataState);
-
-  useEffect(() => {
-    const {
-      work, rounds, rest, isStarted, isFinished,
-    } = tabata;
-
-    console.log('rerere');
-
-    let timer;
-    if (isStarted && !isFinished) {
-      if (work > 0) {
-        timer = setInterval(() => {
-          setTabata({
-            ...tabata,
-            work: work - 1,
-          });
-        }, 200);
-      }
-
-      if (work === 0 && !isFinished) {
-        timer = setInterval(() => {
-          setTabata({
-            ...tabata,
-            rest: rest - 1,
-          });
-        }, 200);
-      }
-
-      if (rest === 0 && work === 0 && !isFinished) {
-        console.log('problem here');
-        setTabata({
-          ...tabata,
-          rounds: rounds - 1,
-          work: initialTabataState.work,
-          rest: initialTabataState.rest,
-        });
-      }
-
-      if (rounds === 0 && rest === 0 && work === 0) {
-        setTabata({ ...initialTabataState, isFinished: true });
-      }
-    } else {
-      clearTimeout(timer);
-    }
-
-    return () => clearTimeout(timer);
-  });
+  const {
+    tabata, startTabata, stopTabata, handleTabataChange,
+  } = useTabataHook(initialTabataState);
 
   return (
     <Container>
@@ -80,15 +31,7 @@ const App = () => {
           </Center>
         </React.Fragment>
       ) : (
-        <Setup
-          onChange={(e) => {
-            const { value, name } = e.target;
-            setTabata({
-              ...tabata,
-              [name]: Number(value),
-            });
-          }}
-        />
+        <Setup onChange={({ target }) => handleTabataChange(target)} />
       )}
       <Center>
         <Controls

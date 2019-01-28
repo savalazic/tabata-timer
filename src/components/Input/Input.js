@@ -8,12 +8,21 @@ const Input = styled.input`
   border: none;
   border-radius: 40px;
   display: block;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 
   transition: background-color 300ms;
 
+  &::placeholder {
+    transition: transform 300ms;
+    transform: translateX(0);
+  }
+
   &:focus {
     background-color: #eee;
+
+    &::placeholder {
+      transform: translate(4px);
+    }
   }
 `;
 
