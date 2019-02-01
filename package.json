@@ -1,8 +1,10 @@
 {
   "name": "tabata-timer",
+  "homepage": "https://savalazic.github.io/tabata-timer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "polished": "^2.3.3",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
@@ -12,6 +14,8 @@
     "styled-reset": "^1.6.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
