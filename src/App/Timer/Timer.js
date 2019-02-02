@@ -5,7 +5,7 @@ import { Text } from '../../components';
 const Timer = React.memo(
   ({ work, rest }) => (
     <React.Fragment>
-      <Text tag="h1" weight="bold" size="140px">
+      <Text tag="h1" weight="bold" size="160px">
         {work || rest}
       </Text>
       <Text tag="h2" size="30px">

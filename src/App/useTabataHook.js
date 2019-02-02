@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 
+import {
+  start, endRound, warning, end,
+} from '../audio';
+
 const defaultTabata = {
   rounds: 8,
   work: 20,
@@ -18,10 +22,30 @@ const useTabataHook = (initialTabataState = defaultTabata) => {
   });
   const stopTabata = () => setTabata(initialTabataState);
 
+  const audio = new Audio();
+
+  const playSound = (sound) => {
+    audio.src = sound;
+    audio.play();
+  };
+
   useEffect(() => {
     const {
       work, rounds, rest, isStarted, isFinished,
     } = tabata;
+
+    if (work === initialTabata.work && isStarted) {
+      playSound(start);
+    }
+    if (work === 0 && rest === initialTabata.rest && isStarted) {
+      playSound(endRound);
+    }
+    if (work <= 3 && work !== 0 && isStarted) {
+      playSound(warning);
+    }
+    if (isFinished) {
+      playSound(end);
+    }
 
     let timer;
     if (isStarted && !isFinished) {

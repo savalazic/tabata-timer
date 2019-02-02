@@ -17,9 +17,9 @@ const StyledText = styled.p`
 `;
 
 const Text = ({
-  children, tag = 'p', size, weight,
+  children, tag = 'p', size, weight, style,
 }) => (
-  <StyledText as={tag} size={size} weight={weight}>
+  <StyledText as={tag} size={size} weight={weight} style={style}>
     {children}
   </StyledText>
 );
