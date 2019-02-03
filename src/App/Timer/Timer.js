@@ -12,7 +12,7 @@ const Fade = transition.div`
 
   &:enter {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.8);
   }
   
   &:enter-active {
@@ -28,7 +28,7 @@ const Fade = transition.div`
   
   &:exit-active {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(1);
     transition: opacity 300ms, transform 300ms;
   }
 `;
