@@ -13,6 +13,8 @@ const StyledButton = styled.button`
   max-width: 240px;
   width: 100%;
   text-align: center;
+  outline: none;
+  user-select: none;
 
   transition: background-color 300ms;
 

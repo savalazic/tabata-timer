@@ -31,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
     -webkit-appearance: none;
     cursor: pointer;
   }
+  *, *:before, *:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 `;
 
 const Root = () => (
