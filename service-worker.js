@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/tabata-timer/precache-manifest.fa6b53517fe8fbd300dd26056c01cda7.js"
+  "/tabata-timer/precache-manifest.51d5a6c9f72dac2fa7922f7da6514960.js"
 );
 
 workbox.clientsClaim();
